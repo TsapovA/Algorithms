@@ -1,4 +1,4 @@
-package alg.arrays;
+package alg.numbers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +13,6 @@ public class TwoSum {
     }
 
     public static int[] twoSum(int[] nums, int target) {
-        int[] arr = new int[2];
         Map<Integer, Integer> map = new HashMap<>();
 
         for (int i = 0; i < nums.length; ++i) {
@@ -23,11 +22,9 @@ public class TwoSum {
             if (val == null) {
                 map.put(nums[i], i);
             } else {
-                arr[0] = i;
-                arr[1] = val;
-                break;
+                return new int[]{i, val};
             }
         }
-        return arr;
+        throw new IllegalArgumentException();
     }
 }
