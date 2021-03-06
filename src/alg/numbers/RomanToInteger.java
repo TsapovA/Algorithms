@@ -63,7 +63,18 @@ public class RomanToInteger {
         System.out.println(romanToInt("IX"));
         System.out.println(romanToInt("LVIII"));
         System.out.println(romanToInt("MCMXCIV"));
+        System.out.println();
+        System.out.println(romanToIntV2(null));
+        System.out.println(romanToIntV2(""));
+        System.out.println(romanToIntV2("III"));
+        System.out.println(romanToIntV2("IV"));
+        System.out.println(romanToIntV2("IX"));
+        System.out.println(romanToIntV2("LVIII"));
+        System.out.println(romanToIntV2("MCMXCIV"));
+
     }
+
+    // first option
 
     private static int romanToInt(String s) {
         if (s == null) {
@@ -101,5 +112,49 @@ public class RomanToInteger {
             }
         }
         return -1;
+    }
+
+    // second option
+
+    private static int romanToIntV2(String s) {
+        if (s == null || s.isEmpty()) {
+            return 0;
+        }
+
+        char[] chars = s.toCharArray();
+        int res = 0;
+
+        for (int i = 0; i < s.length() - 1; ++i) {
+            int left = findIntByRomanChar(chars[i]);
+            int right = findIntByRomanChar(chars[i + 1]);
+            if (left < right) {
+                res -= left;
+            } else {
+                res += left;
+            }
+        }
+        res += findIntByRomanChar(chars[s.length() - 1]);
+        return res;
+    }
+
+    private static int findIntByRomanChar(char ch) {
+        switch (ch) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                return 0;
+        }
     }
 }

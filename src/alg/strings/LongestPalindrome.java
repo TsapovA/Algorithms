@@ -44,17 +44,19 @@ public class LongestPalindrome {
         int leftIndex = 0;
         int rightIndex = 0;
         // It's possible to use a single formula to determine left/right indexes but it doesn't a significant part of the task
-        for (int i = 0; i < s.length(); ++i) {
-            int len = getMaxPalindromeLength(s, i, i);
+        for (int center = 0; center < s.length(); ++center) {
+            // check case with center element
+            int len = getMaxPalindromeLength(s, center, center);
             if (rightIndex - leftIndex < len) {
-                leftIndex = i - len / 2;
-                rightIndex = i + len / 2;
+                leftIndex = center - len / 2;
+                rightIndex = center + len / 2;
             }
 
-            len = getMaxPalindromeLength(s, i, i + 1);
+            //check case without center element
+            len = getMaxPalindromeLength(s, center, center + 1);
             if (rightIndex - leftIndex < len) {
-                leftIndex = i - len / 2;
-                rightIndex = i + (len + 1) / 2;
+                leftIndex = center - len / 2;
+                rightIndex = center + (len + 1) / 2;
             }
         }
         return s.substring(leftIndex, rightIndex + 1);
