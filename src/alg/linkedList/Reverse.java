@@ -1,5 +1,8 @@
 package alg.linkedList;
 
+/**
+ * Change direction of a linkedList
+ */
 public class Reverse {
 
     public static void main(String[] args) {
@@ -12,7 +15,7 @@ public class Reverse {
         display(reverse);
     }
 
-    static Node init(){
+    private static Node init(){
         Node node1 = new Node(1, 1);
         Node node2 = new Node(2, 2);
         Node node3 = new Node(3, 3);
@@ -54,5 +57,25 @@ public class Reverse {
             temp = temp.next;
         }
         System.out.println();
+    }
+
+    private static class Node {
+
+        public final int key;
+        public final int val;
+        public Node next;
+
+        public Node(int key, int val) {
+            this.key = key;
+            this.val = val;
+        }
+
+        private static void displayLinkedList(Node init) {
+            Node temp = init;
+            while (temp != null) {
+                System.out.print(temp.key + " -> ");
+                temp = temp.next;
+            }
+        }
     }
 }
