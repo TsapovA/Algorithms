@@ -4,17 +4,17 @@ public class SortStack {
     private static final int STACK_SIZE = 20;
 
     public static void main(String[] args) {
-        StackX stack = new StackX(STACK_SIZE);
+        CustomStack stack = new CustomStack(STACK_SIZE);
 
         init(stack);
         displayStack(stack);
 
-        StackX sortedStack = sortStack(stack);
+        CustomStack sortedStack = sortStack(stack);
         displayStack(sortedStack);
     }
 
-    private static StackX sortStack(StackX stack) {
-        StackX sortedStack = new StackX(stack.size());
+    private static CustomStack sortStack(CustomStack stack) {
+        CustomStack sortedStack = new CustomStack(stack.size());
         while (!stack.isEmpty()) {
             char temp = stack.pop();
             while (!sortedStack.isEmpty() && temp > sortedStack.peek()) {
@@ -25,14 +25,14 @@ public class SortStack {
         return sortedStack;
     }
 
-    private static void init(StackX stack) {
+    private static void init(CustomStack stack) {
         for (int i = 'h'; i <= 'z'; i++) {
             stack.push((char)i);
         }
     }
 
-    private static void displayStack(StackX stack) {
-        StackX tempStack = new StackX(STACK_SIZE);
+    private static void displayStack(CustomStack stack) {
+        CustomStack tempStack = new CustomStack(STACK_SIZE);
         while (!stack.isEmpty()) {
             char temp = stack.pop();
             System.out.print((int)temp + " ");

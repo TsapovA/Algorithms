@@ -1,11 +1,11 @@
 package alg.stack;
 
-public class StackX {
+public class CustomStack {
     private int maxSize;
     private char[] stackArray;
     private int top;
 
-    public StackX(int strLength) {
+    public CustomStack(int strLength) {
         maxSize = strLength;
         stackArray = new char[maxSize];
         top = -1;
