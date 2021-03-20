@@ -78,20 +78,6 @@ public class RemoveNthNodeFromEndOfList {
         return new ListNode(1, second);
     }
 
-    private static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
     private static void displayListNodeChain(ListNode init) {
         ListNode temp = init;
         while (temp != null) {
