@@ -22,8 +22,8 @@ import java.util.*;
 public class PolishNotation {
 
     public static void main(String[] args) {
-        System.out.println(calc("+54"));
-        System.out.println(calc("-/*2*5+3652"));
+        System.out.println(calc("+54")); //9
+        System.out.println(calc("-/*2*5+3652")); //16
     }
 
     private static double calc(String str) {
