@@ -62,11 +62,19 @@ public class LongestStringChain {
 
     private static boolean isPredecessor(String word1, String word2) {
         if (word2.length() - word1.length() != 1) return false;
+
+        char[] word1Ch = word1.toCharArray();
+        char[] word2Ch = word2.toCharArray();
+
         int counter = 0;
+        boolean shouldStopCycle = false;
 
         for (int i = 0; i < word2.length(); ++i) {
-            if (counter < word1.length() && word2.charAt(i) == word1.charAt(counter)) {
+            if (counter < word1.length() && word2Ch[i] == word1Ch[counter]) {
                 counter++;
+            } else {
+                if (shouldStopCycle) return false;
+                shouldStopCycle = true;
             }
         }
         return counter == word1.length();
