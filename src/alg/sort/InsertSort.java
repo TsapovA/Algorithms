@@ -3,6 +3,10 @@ package alg.sort;
 
 import java.util.Arrays;
 
+/**
+ * time - O(N^2)
+ * space - 1
+ */
 public class InsertSort {
 
     public static void main(String[] args) {
