@@ -1,4 +1,4 @@
-package alg.binaryTree;
+package alg.trees;
 
 public class binaryTree implements Tree {
 

@@ -1,4 +1,4 @@
-package alg.binaryTree;
+package alg.trees;
 
 public class Node {
     public int iData;
