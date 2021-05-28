@@ -27,12 +27,12 @@ package alg.other;
 public class Pow {
 
     public static void main(String[] args) {
-        /*System.out.println(myPow(2.0, 10));
+        System.out.println(myPow(2.0, 10));
         System.out.println(myPow(2.1, 3));
         System.out.println(myPow(2.0, -2));
         System.out.println(myPow(-2.0, 5));
         System.out.println(myPow(2.0, -2147483648));
-        System.out.println(myPow(-1.0, 2147483647));*/
+        System.out.println(myPow(-1.0, 2147483647));
         System.out.println(myPow(1.00012, 1024));
     }
 
