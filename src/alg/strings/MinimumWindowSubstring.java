@@ -134,7 +134,7 @@ public class MinimumWindowSubstring {
                             res :
                             checkedStr;
 
-                    // move leftPos at one step right to decrease equal conuter and continue the whole process
+                    // move leftPos at one step right to decrease equal counter and continue the whole process
                     Map.Entry<Integer, Character> leftPosEntry = sIdxToChar.get(leftPos);
                     windowCounter.put(leftPosEntry.getValue(), windowCounter.get(leftPosEntry.getValue()) - 1);
                     --equalCounter;
