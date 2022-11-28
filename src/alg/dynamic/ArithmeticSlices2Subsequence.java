@@ -48,14 +48,16 @@ public class ArithmeticSlices2Subsequence {
         System.out.println(numberOfArithmeticSlices(new int[]{7, 7, 7, 7, 7})); // 16
     }
 
-    private static int numberOfArithmeticSlices(int[] A) {
-        int length = A.length;
+    private static int numberOfArithmeticSlices(int[] ar) {
+        int length = ar.length;
         Map<Integer, Integer>[] cnt = new Map[length];
         int ans = 0;
         for (int i = 0; i < length; ++i) {
+            // map contains a group of elements (with number of elements >= 2) with the same delta ar[i]-ar[j].
+            // Every time checking idx=i we check map by idxs = i, j with needed delta
             cnt[i] = new HashMap<>();
             for (int j = 0; j < i; ++j) {
-                long delta = (long) A[i] - (long) A[j];
+                long delta = (long) ar[i] - (long) ar[j];
                 if (delta < Integer.MIN_VALUE || delta > Integer.MAX_VALUE) {
                     continue;
                 }
