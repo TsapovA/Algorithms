@@ -8,7 +8,8 @@ import java.util.Map;
  *
  * Given an integer array nums, return the number of all the arithmetic subsequences of nums.
  *
- * A sequence of numbers is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.
+ * A sequence of numbers is called arithmetic if it consists of at least three elements and if the difference between
+ * any two consecutive elements is the same.
  *
  * For example, [1, 3, 5, 7, 9], [7, 7, 7, 7], and [3, -1, -5, -9] are arithmetic sequences.
  * For example, [1, 1, 2, 5, 7] is not an arithmetic sequence.
