@@ -1,6 +1,8 @@
 package alg.strings;
 
 /**
+ * https://leetcode.com/problems/longest-palindromic-substring/
+ *
  * Given a string s, return the longest palindromic substring in s.
  *
  * Example 1:
@@ -28,13 +30,20 @@ package alg.strings;
  * s consist of only digits and English letters (lower-case and/or upper-case),
  */
 
-public class LongestPalindrome {
+public class LongestPalindromicSubstring {
 
     public static void main(String[] args) {
         System.out.println(getLongestPalindrome("babad")); // "bab" or "aba"
+        System.out.println(getLongestPalindrome2("babad")); // "bab" or "aba"
+
         System.out.println(getLongestPalindrome("cbbd"));  // "bb"
+        System.out.println(getLongestPalindrome2("cbbd"));  // "bb"
+
         System.out.println(getLongestPalindrome("a"));     // "a"
+        System.out.println(getLongestPalindrome2("a"));     // "a"
+
         System.out.println(getLongestPalindrome("ac"));    // "a"
+        System.out.println(getLongestPalindrome2("ac"));    // "a"
     }
 
     private static String getLongestPalindrome(String s) {
@@ -70,5 +79,42 @@ public class LongestPalindrome {
             ++right;
         }
         return right - left - 2;
+    }
+
+    //------------------
+
+    private static String getLongestPalindrome2(String s) {
+        if (s.length() == 1) {
+            return s;
+        }
+        int leftIdx = 0;
+        int len = 1;
+
+        for (int i = 0; i < s.length(); ++i) {
+            int curLen = getMaxLength(s, i, i);
+            if (curLen > len) {
+                len = curLen;
+                leftIdx = i - curLen / 2;
+            }
+
+            curLen = getMaxLength(s, i, i + 1);
+            if (curLen > len) {
+                len = curLen;
+                leftIdx = i - (curLen - 1) / 2;
+            }
+        }
+        return s.substring(leftIdx, leftIdx + len);
+    }
+
+    private static int getMaxLength(String s, int leftIdx, int rightIdx) {
+        int i = leftIdx, j = rightIdx;
+        while(i >=0 && j < s.length()) {
+            if (s.charAt(i) != s.charAt(j)) {
+                return Math.max(j - i - 1, 0);
+            }
+            --i;
+            ++j;
+        }
+        return j - i - 1;
     }
 }
