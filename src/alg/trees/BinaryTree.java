@@ -1,6 +1,6 @@
 package alg.trees;
 
-public class binaryTree implements Tree {
+public class BinaryTree implements Tree {
 
     private Node root;
 

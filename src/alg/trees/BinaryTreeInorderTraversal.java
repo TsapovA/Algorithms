@@ -1,7 +1,8 @@
 package alg.trees;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import static alg.trees.TreeNode.buildFirstTree;
 
 /**
  * Given the root of a binary tree, return the inorder traversal of its nodes' values.
@@ -44,7 +45,9 @@ public class BinaryTreeInorderTraversal {
 
     public static void main(String[] args) {
         for (int i = 1; i <= 5; ++i) {
+            System.out.println(i);
             System.out.println(inorderTraversal(buildFirstTree(i)));
+            performNodeTraversalStack(buildFirstTree(i));
         }
     }
 
@@ -61,14 +64,21 @@ public class BinaryTreeInorderTraversal {
         performNodeTraversal(node.right, result);
     }
 
-    private static TreeNode buildFirstTree(int num) {
-        switch(num) {
-            case 1:  return new TreeNode(1, null, new TreeNode(2, new TreeNode(3), null));
-            case 2: return null;
-            case 3: return new TreeNode(1);
-            case 4: return new TreeNode(1, new TreeNode(2), null);
-            case 5: return new TreeNode(1, null, new TreeNode(2));
-            default: throw new UnsupportedOperationException();
+    private static void performNodeTraversalStack(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode current = root;
+
+        while (current != null || !stack.isEmpty()) {
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+            current = stack.poll();
+            result.add(current.val);
+            current = current.right;
         }
+        System.out.println(result);
+        // return result
     }
 }
