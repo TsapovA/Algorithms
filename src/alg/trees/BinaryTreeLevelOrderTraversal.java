@@ -58,7 +58,7 @@ public class BinaryTreeLevelOrderTraversal {
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        return performRecursive(queue, new ArrayList<List<Integer>>());
+        return performRecursive(queue, new ArrayList<>());
     }
 
     private static List<List<Integer>> performRecursive(Queue<TreeNode> levelNodes, List<List<Integer>> result) {
@@ -73,5 +73,31 @@ public class BinaryTreeLevelOrderTraversal {
         }
         result.add(levelInts);
         return performRecursive(nextLevelNodes, result);
+    }
+
+    private List<List<Integer>> processIterative(TreeNode root) {
+        if (root == null) {
+            return Collections.emptyList();
+        }
+        List<List<Integer>> result = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int curLevel = 0;
+        while (!queue.isEmpty()) {
+            int len = queue.size();
+            result.add(new ArrayList<>(len));
+            for (int i = 0; i < len; i++) {
+                TreeNode node = queue.poll();
+                result.get(curLevel).add(node.val);
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+            curLevel++;
+        }
+        return result;
     }
 }

@@ -26,6 +26,19 @@ public class BinaryTree implements Tree {
         return current;
     }
 
+    public Node findRecursive(Node node, int key) {
+        if (node == null) {
+            return null;
+        }
+        if (node.iData == key) {
+            return node;
+        } else if (node.iData < key) {
+            return findRecursive(node.leftChild, key);
+        } else  {
+            return findRecursive(node.rightChild, key);
+        }
+    }
+
     @Override
     public void insert(int id, double dd) {
         Node newNode = new Node(id, dd);
@@ -54,6 +67,19 @@ public class BinaryTree implements Tree {
                 parent.rightChild = newNode;
             }
         }
+    }
+
+    public Node insertRecursive(Node node, int id, double dd) {
+        if (node == null) {
+            return new Node(id, dd);
+        }
+
+        if (node.iData < id) {
+            node.leftChild = insertRecursive(node.leftChild, id, dd);
+        } else if (node.iData > id) {
+            node.rightChild = insertRecursive(node.rightChild, id, dd);
+        }
+        return node;
     }
 
     @Override
